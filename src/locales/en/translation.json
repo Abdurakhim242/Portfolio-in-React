@@ -1,0 +1,59 @@
+{
+  "nav": {
+    "home": "Home",
+    "about": "About",
+    "services": "Services",
+    "portfolio": "Portfolio",
+    "contact": "Contact"
+  },
+  "header": {
+    "role": "Frontend Developer",
+    "greeting": "Hi, I'm",
+    "from": "From"
+  },
+  "about": {
+    "title": "About Me",
+    "description": "I'm a {{age}} years old developer with education in {{education}} and skills like {{skills}}.",
+    "skills": "Skills",
+    "experience": "Experience",
+    "education": "Education"
+  },
+  "skills": {
+    "frontend": "Frontend",
+    "web": "Web Development",
+    "languages": "Programming Languages"
+  },
+  "experience": {
+    "proj1": "Built Tic Tac Toe game",
+    "proj2": "Developed a Calculator App",
+    "proj3": "React Dashboard Project"
+  },
+  "services": {
+    "title": "My Services",
+    "web": "Web Development",
+    "webDesc": "Creating responsive and dynamic websites.",
+    "projects": "Project Help",
+    "projectsDesc": "Assisting in building your own projects.",
+    "ui": "UI Design",
+    "uiDesc": "Modern and clean user interface design."
+  },
+  "portfolio": {
+    "title": "My Portfolio",
+    "tttTitle": "Tic Tac Toe Game",
+    "tttDesc": "Simple React-based game",
+    "calcTitle": "Calculator",
+    "calcDesc": "Basic calculator app",
+    "modmeTitle": "Modme CRM",
+    "modmeDesc": "Dashboard built with React"
+  },
+  "contact": {
+    "title": "Contact Me",
+    "name": "Your Name",
+    "email": "Your Email",
+    "message": "Your Message",
+    "send": "Send Message"
+  },
+  "learnMore": "Learn More",
+  "seeMore": "See More",
+  "copyright": "All rights reserved"
+}

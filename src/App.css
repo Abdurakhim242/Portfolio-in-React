@@ -3,6 +3,7 @@
   padding: 0;
   font-family: "Poppins", sans-serif;
   box-sizing: border-box;
+  transition: all 0.3s ease-in-out;
 }
 
 html {
@@ -239,6 +240,7 @@ nav ul li a:hover::after {
   height: 450px;
   border-radius: 10px;
   display: block;
+  object-fit: cover;
   transition: transform 0.5s;
 }
 
@@ -402,8 +404,12 @@ form .btn.btn2 {
 
 /* DARK MODE */
 body.dark-mode {
-  background: #f4f4f4;
+  background: #cfcece;
   color: #111;
+}
+
+body.dark-mode #header {
+  background-image: url("./images/background-white.png");
 }
 
 body.dark-mode nav {
@@ -435,8 +441,12 @@ body.dark-mode .tab-contents ul li span {
   color: #007bff;
 }
 
+body.dark-mode .tab-contents ul li {
+  color: #000000;
+}
+
 body.dark-mode .services-list div {
-  background: #eaeaea;
+  background: rgb(173, 173, 173);
   color: #111;
 }
 
@@ -488,8 +498,81 @@ body.dark-mode .copyright {
   color: #111;
 }
 
+body.dark-mode .contact-left p i{
+  color: #007bff;
+}
+
+.theme-toggle{
+  border: none;
+  cursor: pointer;
+  padding: 3px 6px;
+  border-radius: 6px;
+}
+
+.language-selector {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+}
+
+.language-selector select {
+  background: transparent;
+  color: inherit;
+  border: 1px solid #ff004f;
+  padding: 5px 10px;
+  border-radius: 5px;
+}
+
+
 /* RESPONSIVE */
-@media only screen and (max-width: 768px) {
+/* --- TABLETS (до 992px) --- */
+@media only screen and (max-width: 992px) {
+  .container {
+    padding: 10px 5%;
+  }
+
+  nav ul li {
+    margin: 8px 15px;
+  }
+
+  .header-text {
+    font-size: 26px;
+    margin-top: 30%;
+  }
+
+  .header-text h1 {
+    font-size: 45px;
+  }
+
+  .about-col-1,
+  .about-col-2 {
+    flex-basis: 100%;
+    margin-bottom: 30px;
+  }
+
+  .services-list,
+  .work-list {
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    grid-gap: 30px;
+  }
+
+  .layer {
+    font-size: 13px;
+    padding: 0 20px;
+  }
+
+  .contact-left,
+  .contact-right {
+    flex-basis: 100%;
+  }
+
+  .sub-title {
+    font-size: 36px;
+  }
+}
+
+/* --- PHONES (до 600px) --- */
+@media only screen and (max-width: 600px) {
   nav {
     flex-direction: column;
     align-items: flex-start;
@@ -499,6 +582,11 @@ body.dark-mode .copyright {
   nav ul {
     flex-direction: column;
     width: 100%;
+    display: none;
+  }
+
+  nav ul.active {
+    display: flex;
   }
 
   nav ul li {
@@ -506,19 +594,73 @@ body.dark-mode .copyright {
   }
 
   .Logo {
-    width: 160px;
+    width: 140px;
   }
 
   .header-text {
+    font-size: 20px;
     margin-top: 40%;
-    font-size: 24px;
   }
 
   .header-text h1 {
-    font-size: 40px;
+    font-size: 32px;
   }
 
-  .sub-title {
-    font-size: 40px;
+  .about-col-1 img {
+    height: auto;
+  }
+
+  .tab-links {
+    margin-right: 20px;
+    font-size: 16px;
+  }
+
+  .tab-titles {
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .services-list div h2 {
+    font-size: 20px;
+  }
+
+  .services-list div {
+    padding: 20px;
+  }
+
+  .layer {
+    font-size: 12px;
+    padding: 0 15px;
+  }
+
+  .layer a {
+    width: 50px;
+    height: 50px;
+    line-height: 50px;
+    font-size: 16px;
+  }
+
+  .btn {
+    padding: 12px 30px;
+    font-size: 14px;
+  }
+
+  form input,
+  form textarea {
+    font-size: 16px;
+    padding: 12px;
+  }
+
+  form .btn.btn2 {
+    padding: 12px 40px;
+    font-size: 16px;
+  }
+
+  .copyright {
+    font-size: 14px;
+  }
+
+  .social-icons i {
+    font-size: 24px;
   }
 }

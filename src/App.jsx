@@ -1,6 +1,6 @@
 import "./App.css";
 import logoImg from "./images/logo.png";
-import soonImg from "./images/soon.png";
+import logoWhite from "./images/logo-white.png";
 import userImg from "./images/image.png";
 import calculatorImg from "./images/calculator.png";
 import tictactoe from "./images/tic-tac-toe.png";
@@ -8,9 +8,11 @@ import modme from "./images/modme.png";
 
 import { Link } from "react-scroll";
 import React, { useState, useEffect } from "react";
+import { useTranslation } from "react-i18next";
 
 const App = ({ info }) => {
   const [activeTab, setActiveTab] = useState("skills");
+  const { t, i18n } = useTranslation();
 
   const data = Object.fromEntries(
     (info || []).map((item) => [item.title.toLowerCase(), item.value])
@@ -20,11 +22,7 @@ const App = ({ info }) => {
     setActiveTab(tabname);
   };
 
-  console.log("INFO:", info);
-  console.log("DATA:", data);
-
   const [isDarkMode, setIsDarkMode] = useState(false);
-
   useEffect(() => {
     document.body.className = isDarkMode ? "dark-mode" : "";
   }, [isDarkMode]);
@@ -33,51 +31,64 @@ const App = ({ info }) => {
     setIsDarkMode(!isDarkMode);
   };
 
+  const changeLanguage = (lng) => {
+    i18n.changeLanguage(lng); // i18n bu yerda aniq ishlaydi
+  };
+
   return (
     <>
-      <div class="services-list fade-in">...</div>
-
       <div id="header">
         <div className="container">
           <nav>
-            <img src={logoImg} alt="Logo" className="Logo" />
+            <img
+              src={isDarkMode ? logoWhite : logoImg}
+              alt="Logo"
+              className="Logo"
+            />
             <ul>
               <li>
-                <Link to="header" smooth={true} duration={500}>
-                  Home
+                <Link to="header" smooth duration={500}>
+                  {t("nav.home")}
                 </Link>
               </li>
               <li>
-                <Link to="about" smooth={true} duration={500}>
-                  About
+                <Link to="about" smooth duration={500}>
+                  {t("nav.about")}
                 </Link>
               </li>
               <li>
-                <Link to="services" smooth={true} duration={500}>
-                  Services
+                <Link to="services" smooth duration={500}>
+                  {t("nav.services")}
                 </Link>
               </li>
               <li>
-                <Link to="portfolio" smooth={true} duration={500}>
-                  Portfolio
+                <Link to="portfolio" smooth duration={500}>
+                  {t("nav.portfolio")}
                 </Link>
               </li>
               <li>
-                <Link to="contact" smooth={true} duration={500}>
-                  Contact
+                <Link to="contact" smooth duration={500}>
+                  {t("nav.contact")}
                 </Link>
               </li>
               <button onClick={toggleTheme} className="theme-toggle">
-                {isDarkMode ? "☀️ Light" : "🌙 Dark"}
+                {isDarkMode ? "🌙 Dark" : "☀️ Light"}
               </button>
+              <select
+                onChange={(e) => changeLanguage(e.target.value)}
+                defaultValue={i18n.language}
+              >
+                <option value="en">EN</option>
+                <option value="uz">UZ</option>
+                <option value="ru">RU</option>
+              </select>
             </ul>
           </nav>
           <div className="header-text">
-            <p>Frontend Developer</p>
+            <p>{t("header.role")}</p>
             <h1>
-              Hi, I'm <span>{data.name}</span>
-              <br />
-              From {data.country}
+              {t("header.greeting")} <span>{data.name}</span>
+              <br /> {t("header.from")} {data.country}
             </h1>
           </div>
         </div>
@@ -91,14 +102,13 @@ const App = ({ info }) => {
               <img src={userImg} alt="User" />
             </div>
             <div className="about-col-2">
-              <h1 className="sub-title">About Me</h1>
+              <h1 className="sub-title">{t("about.title")}</h1>
               <p>
-                Hi! I’m a {data.age}-year-old beginner front-end developer
-                passionate about creating websites and web applications. I study
-                at {data.education} and have experience with {data.skills}. I
-                enjoy working on small projects and constantly improving my
-                skills. My goal is to grow as a developer and gain real-world
-                experience in web development.
+                {t("about.description", {
+                  age: data.age,
+                  education: data.education,
+                  skills: data.skills,
+                })}
               </p>
 
               <div className="tab-titles">
@@ -108,7 +118,7 @@ const App = ({ info }) => {
                   }`}
                   onClick={() => opentab("skills")}
                 >
-                  Skills
+                  {t("about.skills")}
                 </p>
                 <p
                   className={`tab-links ${
@@ -116,7 +126,7 @@ const App = ({ info }) => {
                   }`}
                   onClick={() => opentab("experience")}
                 >
-                  Experience
+                  {t("about.experience")}
                 </p>
                 <p
                   className={`tab-links ${
@@ -124,7 +134,7 @@ const App = ({ info }) => {
                   }`}
                   onClick={() => opentab("education")}
                 >
-                  Education
+                  {t("about.education")}
                 </p>
               </div>
 
@@ -135,17 +145,17 @@ const App = ({ info }) => {
               >
                 <ul>
                   <li>
-                    <span>Front-End</span>
+                    <span>{t("skills.frontend")}</span>
                     <br />
-                    UI/UX basics
+                    UI/UX
                   </li>
                   <li>
-                    <span>Web Development</span>
+                    <span>{t("skills.web")}</span>
                     <br />
-                    Responsive Design
+                    Responsive
                   </li>
                   <li>
-                    <span>Languages</span>
+                    <span>{t("skills.languages")}</span>
                     <br />
                     {data.skills}
                   </li>
@@ -160,18 +170,17 @@ const App = ({ info }) => {
                   <li>
                     <span>2025</span>
                     <br />
-                    Developed small projects, including a Tic-Tac-Toe game using
-                    HTML, CSS, and JavaScript.
+                    {t("experience.proj1")}
                   </li>
                   <li>
                     <span>2024</span>
                     <br />
-                    Built responsive web pages with adaptive layouts
+                    {t("experience.proj2")}
                   </li>
                   <li>
                     <span>2024-2025</span>
                     <br />
-                    Practicing UI/UX basics and improving JavaScript skills
+                    {t("experience.proj3")}
                   </li>
                 </ul>
               </div>
@@ -196,25 +205,25 @@ const App = ({ info }) => {
       {/* Services */}
       <div id="services">
         <div className="container">
-          <h1 className="sub-title">My Services</h1>
+          <h1 className="sub-title">{t("services.title")}</h1>
           <div className="services-list">
             <div>
               <i className="fa-solid fa-code"></i>
-              <h2>Website layout development</h2>
-              <p>HTML, CSS responsive design</p>
-              <a href="#">Learn more</a>
+              <h2>{t("services.web")}</h2>
+              <p>{t("services.webDesc")}</p>
+              <a href="#">{t("learnMore")}</a>
             </div>
             <div>
               <i className="fa-solid fa-crop-simple"></i>
-              <h2>Small JavaScript projects</h2>
-              <p>Tic-Tac-Toe, Calculator, Games</p>
-              <a href="#">Learn more</a>
+              <h2>{t("services.projects")}</h2>
+              <p>{t("services.projectsDesc")}</p>
+              <a href="#">{t("learnMore")}</a>
             </div>
             <div>
               <i className="fa-solid fa-palette"></i>
-              <h2>UI/UX Design Basics</h2>
-              <p>Design concepts and user experience</p>
-              <a href="#">Learn more</a>
+              <h2>{t("services.ui")}</h2>
+              <p>{t("services.uiDesc")}</p>
+              <a href="#">{t("learnMore")}</a>
             </div>
           </div>
         </div>
@@ -223,20 +232,14 @@ const App = ({ info }) => {
       {/* Portfolio */}
       <div id="portfolio">
         <div className="container">
-          <h1 className="sub-title">My Portfolio</h1>
+          <h1 className="sub-title">{t("portfolio.title")}</h1>
           <div className="work-list">
             <div className="work">
               <img src={tictactoe} alt="Tic Tac Toe" />
               <div className="layer">
-                <h3>Tic-Tac-Toe Game</h3>
-                <p>
-                  Developed a fully functional Tic-Tac-Toe game with JavaScript.
-                </p>
-                <a
-                  href="https://github.com/yourusername/tic-tac-toe"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
+                <h3>{t("portfolio.tttTitle")}</h3>
+                <p>{t("portfolio.tttDesc")}</p>
+                <a href="#">
                   <i className="fa-brands fa-github"></i>
                 </a>
               </div>
@@ -244,50 +247,36 @@ const App = ({ info }) => {
             <div className="work">
               <img src={calculatorImg} alt="Calculator" />
               <div className="layer">
-                <h3>Calculator</h3>
-                <p>Simple calculator built using JavaScript.</p>
-                <a
-                  href="https://github.com/yourusername/calculator"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
+                <h3>{t("portfolio.calcTitle")}</h3>
+                <p>{t("portfolio.calcDesc")}</p>
+                <a href="#">
                   <i className="fa-brands fa-github"></i>
                 </a>
               </div>
             </div>
             <div className="work">
-              <img src={modme} alt="IT TAT modme (demo)" />
+              <img src={modme} alt="Modme" />
               <div className="layer">
-                <h3>IT TAT modme (demo)</h3>
-                <p>Simple calculator built using React.</p>
-                <a
-                  href="https://github.com/yourusername/calculator"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
+                <h3>{t("portfolio.modmeTitle")}</h3>
+                <p>{t("portfolio.modmeDesc")}</p>
+                <a href="#">
                   <i className="fa-brands fa-github"></i>
                 </a>
               </div>
             </div>
           </div>
           <a href="#" className="btn">
-            See More
+            {t("seeMore")}
           </a>
         </div>
       </div>
 
       {/* Contact */}
-      <div id="contact" style={{ padding: "50px 0" }}>
+      <div id="contact">
         <div className="container">
-          <div
-            className="row"
-            style={{ display: "flex", flexWrap: "wrap", gap: "30px" }}
-          >
-            <div
-              className="contact-left"
-              style={{ flexBasis: "35%", color: "#ababab" }}
-            >
-              <h1 className="sub-title">Contact Me</h1>
+          <div className="row">
+            <div className="contact-left">
+              <h1 className="sub-title">{t("contact.title")}</h1>
               <p>
                 <i className="fa-solid fa-phone"></i> {data.phone}
               </p>
@@ -298,53 +287,31 @@ const App = ({ info }) => {
                 <i className="fa-solid fa-location-dot"></i> {data.country}
               </p>
               <div className="social-icons">
-                <a
-                  href="https://facebook.com"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
+                <a href="#">
                   <i className="fa-brands fa-facebook"></i>
                 </a>
-                <a
-                  href="https://twitter.com"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
+                <a href="#">
                   <i className="fa-brands fa-twitter"></i>
                 </a>
-                <a
-                  href="https://instagram.com"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
+                <a href="#">
                   <i className="fa-brands fa-instagram"></i>
                 </a>
-                <a
-                  href="https://linkedin.com"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
+                <a href="#">
                   <i className="fa-brands fa-linkedin"></i>
                 </a>
               </div>
             </div>
-            <div className="contact-right" style={{ flexBasis: "60%" }}>
+            <div className="contact-right">
               <form>
-                <input
-                  className="nameInp"
-                  type="text"
-                  placeholder="Name"
+                <input type="text" placeholder={t("contact.name")} required />
+                <input type="email" placeholder={t("contact.email")} required />
+                <textarea
+                  placeholder={t("contact.message")}
+                  rows="6"
                   required
-                />
-                <input
-                  className="emailInp"
-                  type="email"
-                  placeholder="Email"
-                  required
-                />
-                <textarea placeholder="Message" rows="6" required></textarea>
-                <button className="btn btn2" type="submit">
-                  Send Message
+                ></textarea>
+                <button type="submit" className="btn btn2">
+                  {t("contact.send")}
                 </button>
               </form>
             </div>
@@ -353,11 +320,12 @@ const App = ({ info }) => {
       </div>
 
       <div className="copyright">
-        <p>© 2025 {data.name}. All rights reserved.</p>
+        <p>
+          © 2025 {data.name}. {t("copyright")}
+        </p>
       </div>
     </>
   );
 };
 
 export default App;
-// portfolio

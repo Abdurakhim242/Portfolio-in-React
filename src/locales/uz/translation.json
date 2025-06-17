@@ -1,0 +1,59 @@
+{
+  "nav": {
+    "home": "Bosh sahifa",
+    "about": "Men haqimda",
+    "services": "Xizmatlar",
+    "portfolio": "Portfolio",
+    "contact": "Bog‘lanish"
+  },
+  "header": {
+    "role": "Frontend dasturchi",
+    "greeting": "Salom, men",
+    "from": "danman"
+  },
+  "about": {
+    "title": "Men haqimda",
+    "description": "{{age}} yoshdaman, {{education}} bo‘yicha ta’lim olganman va quyidagi ko‘nikmalarga egaman: {{skills}}.",
+    "skills": "Ko‘nikmalar",
+    "experience": "Tajriba",
+    "education": "Ta’lim"
+  },
+  "skills": {
+    "frontend": "Frontend",
+    "web": "Veb Dasturlash",
+    "languages": "Dasturlash tillari"
+  },
+  "experience": {
+    "proj1": "Tic Tac Toe o‘yini yaratildi",
+    "proj2": "Kalkulyator ilovasi ishlab chiqildi",
+    "proj3": "React Dashboard loyihasi"
+  },
+  "services": {
+    "title": "Xizmatlarim",
+    "web": "Veb Dasturlash",
+    "webDesc": "Responsiv va zamonaviy saytlar yarataman.",
+    "projects": "Loyihada yordam",
+    "projectsDesc": "Shaxsiy loyihalaringizda yordam beraman.",
+    "ui": "UI Dizayn",
+    "uiDesc": "Toza va zamonaviy interfeyslar ishlab chiqaman."
+  },
+  "portfolio": {
+    "title": "Portfolio",
+    "tttTitle": "Tic Tac Toe o‘yini",
+    "tttDesc": "React yordamida yaratilgan oddiy o‘yin",
+    "calcTitle": "Kalkulyator",
+    "calcDesc": "Asosiy hisoblash ilovasi",
+    "modmeTitle": "Modme CRM",
+    "modmeDesc": "React asosida yaratilgan boshqaruv paneli"
+  },
+  "contact": {
+    "title": "Bog‘lanish",
+    "name": "Ismingiz",
+    "email": "Email manzilingiz",
+    "message": "Xabaringiz",
+    "send": "Yuborish"
+  },
+  "learnMore": "Ko‘proq o‘rganish",
+  "seeMore": "Boshqalarini ko‘rish",
+  "copyright": "Barcha huquqlar himoyalangan"
+}

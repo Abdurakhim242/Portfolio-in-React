@@ -1,0 +1,59 @@
+{
+  "nav": {
+    "home": "Главная",
+    "about": "Обо мне",
+    "services": "Услуги",
+    "portfolio": "Портфолио",
+    "contact": "Контакты"
+  },
+  "header": {
+    "role": "Фронтенд разработчик",
+    "greeting": "Привет, я",
+    "from": "из"
+  },
+  "about": {
+    "title": "Обо мне",
+    "description": "Мне {{age}} лет, образование: {{education}}, навыки: {{skills}}.",
+    "skills": "Навыки",
+    "experience": "Опыт",
+    "education": "Образование"
+  },
+  "skills": {
+    "frontend": "Фронтенд",
+    "web": "Веб-разработка",
+    "languages": "Языки программирования"
+  },
+  "experience": {
+    "proj1": "Создана игра Tic Tac Toe",
+    "proj2": "Разработано приложение калькулятор",
+    "proj3": "Проект Dashboard на React"
+  },
+  "services": {
+    "title": "Мои услуги",
+    "web": "Веб-разработка",
+    "webDesc": "Создание адаптивных и современных сайтов.",
+    "projects": "Помощь с проектами",
+    "projectsDesc": "Помощь в ваших проектах.",
+    "ui": "UI Дизайн",
+    "uiDesc": "Современные и чистые пользовательские интерфейсы."
+  },
+  "portfolio": {
+    "title": "Портфолио",
+    "tttTitle": "Игра Tic Tac Toe",
+    "tttDesc": "Простая игра на React",
+    "calcTitle": "Калькулятор",
+    "calcDesc": "Базовое приложение калькулятора",
+    "modmeTitle": "Modme CRM",
+    "modmeDesc": "Панель управления на React"
+  },
+  "contact": {
+    "title": "Связаться со мной",
+    "name": "Ваше имя",
+    "email": "Ваш Email",
+    "message": "Ваше сообщение",
+    "send": "Отправить"
+  },
+  "learnMore": "Подробнее",
+  "seeMore": "Смотреть еще",
+  "copyright": "Все права защищены"
+}
