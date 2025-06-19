@@ -502,26 +502,70 @@ body.dark-mode .contact-left p i{
   color: #007bff;
 }
 
-.theme-toggle{
+.theme-toggle {
+  background-color: #ff004f;
+  color: #fff;
+  padding: 6px 10px;
   border: none;
+  border-radius: 8px;
+  font-size: 14px;
+  font-weight: 500;
   cursor: pointer;
-  padding: 3px 6px;
-  border-radius: 6px;
+  transition: background 0.3s, transform 0.2s;
+  margin-left: 10px;
+}
+
+.theme-toggle:hover {
+  background-color: #e60045;
+  transform: scale(1.05);
 }
 
 .language-selector {
   position: absolute;
   top: 20px;
   right: 20px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  z-index: 1001;
 }
 
 .language-selector select {
-  background: transparent;
-  color: inherit;
+  background-color: transparent;
+  color: #fff;
   border: 1px solid #ff004f;
-  padding: 5px 10px;
-  border-radius: 5px;
+  padding: 6px 12px;
+  border-radius: 8px;
+  font-size: 14px;
+  cursor: pointer;
+  transition: all 0.3s ease;
 }
+
+select:hover {
+  background-color: #ff004f;
+  color: #fff;
+}
+
+/* Dark mode */
+body.dark-mode .theme-toggle {
+  background-color: #007bff;
+  color: #fff;
+}
+
+body.dark-mode .theme-toggle:hover {
+  background-color: #0056b3;
+}
+
+body.dark-mode .language-selector select {
+  border: 1px solid #007bff;
+  color: #111;
+}
+
+body.dark-mode .language-selector select:hover {
+  background-color: #007bff;
+  color: white;
+}
+
 
 
 /* RESPONSIVE */
