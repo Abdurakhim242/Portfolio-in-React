@@ -13,27 +13,37 @@ import { useTranslation } from "react-i18next";
 const App = ({ info }) => {
   const [activeTab, setActiveTab] = useState("skills");
   const { t, i18n } = useTranslation();
+  const [menuOpen, setMenuOpen] = useState(false);
+  const [isDarkMode, setIsDarkMode] = useState(false);
+  const [loading, setLoading] = useState(true);
 
   const data = Object.fromEntries(
     (info || []).map((item) => [item.title.toLowerCase(), item.value])
   );
 
-  const opentab = (tabname) => {
-    setActiveTab(tabname);
-  };
+  const opentab = (tabname) => setActiveTab(tabname);
+  const toggleTheme = () => setIsDarkMode(!isDarkMode);
+  const changeLanguage = (lng) => i18n.changeLanguage(lng);
+  const toggleMenu = () => setMenuOpen(!menuOpen);
 
-  const [isDarkMode, setIsDarkMode] = useState(false);
   useEffect(() => {
     document.body.className = isDarkMode ? "dark-mode" : "";
   }, [isDarkMode]);
 
-  const toggleTheme = () => {
-    setIsDarkMode(!isDarkMode);
-  };
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setLoading(false);
+    }, 5000);
+    return () => clearTimeout(timer);
+  }, []);
 
-  const changeLanguage = (lng) => {
-    i18n.changeLanguage(lng); // i18n bu yerda aniq ishlaydi
-  };
+  if (loading) {
+    return (
+      <div id="loader">
+        <div className="spinner">Welcome to my Portfolio</div>
+      </div>
+    );
+  }
 
   return (
     <>
@@ -45,7 +55,10 @@ const App = ({ info }) => {
               alt="Logo"
               className="Logo"
             />
-            <ul>
+            <div className="menu-toggle" onClick={toggleMenu}>
+              <i className="fa fa-bars"></i>
+            </div>
+            <ul className={menuOpen ? "active" : ""}>
               <li>
                 <Link to="header" smooth duration={500}>
                   {t("nav.home")}
@@ -88,13 +101,13 @@ const App = ({ info }) => {
             <p>{t("header.role")}</p>
             <h1>
               {t("header.greeting")} <span>{data.name}</span>
-              <br /> {t("header.from")} {data.country}
+              <br />
+              {t("header.from")} {data.country}
             </h1>
           </div>
         </div>
       </div>
 
-      {/* About Section */}
       <div id="about">
         <div className="container">
           <div className="row">
@@ -202,7 +215,6 @@ const App = ({ info }) => {
         </div>
       </div>
 
-      {/* Services */}
       <div id="services">
         <div className="container">
           <h1 className="sub-title">{t("services.title")}</h1>
@@ -229,7 +241,6 @@ const App = ({ info }) => {
         </div>
       </div>
 
-      {/* Portfolio */}
       <div id="portfolio">
         <div className="container">
           <h1 className="sub-title">{t("portfolio.title")}</h1>
@@ -271,7 +282,6 @@ const App = ({ info }) => {
         </div>
       </div>
 
-      {/* Contact */}
       <div id="contact">
         <div className="container">
           <div className="row">
@@ -287,13 +297,13 @@ const App = ({ info }) => {
                 <i className="fa-solid fa-location-dot"></i> {data.country}
               </p>
               <div className="social-icons">
-                <a href="#">
+                <a href="https://www.facebook.com/share/14r1UsdT68/?mibextid=wwXIfr">
                   <i className="fa-brands fa-facebook"></i>
                 </a>
                 <a href="#">
                   <i className="fa-brands fa-twitter"></i>
                 </a>
-                <a href="#">
+                <a href="https://www.instagram.com/abdurakhim.09?igsh=MXhucGFkbTlpbDNnYw%3D%3D&utm_source=qr">
                   <i className="fa-brands fa-instagram"></i>
                 </a>
                 <a href="#">
